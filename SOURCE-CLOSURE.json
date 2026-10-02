@@ -1,0 +1,24 @@
+{
+  "hostImports": {
+    "view.issues": [
+      "/core/runtime.js",
+      "/util/view-plugin.js"
+    ],
+    "view.markdown": [
+      "/core/runtime.js",
+      "/util/view-plugin.js",
+      "/widgets/markdown-it.js"
+    ],
+    "view.props": [
+      "/core/runtime.js",
+      "/util/view-plugin.js"
+    ]
+  },
+  "limits": "Parent must add source-bound LICENSE/NOTICE evidence before distribution.",
+  "transformation": "Blend entries remove only the other registration block; original source retained under upstream/.",
+  "upstream_sha256": {
+    "views/view-issues.js": "afabf036af9781cae60751a335b57ae5d29a4b4a06c44e5c6c66dce7e07767ab",
+    "views/view-markdow.js": "1b288774f29bb496a238f2254fd6291b613307b901b987050971d6e7d66528f2",
+    "views/view-props.js": "aa91555602db200ce682d9dd18b1d40a40e90ad6f7535bed67242e80331278bb"
+  }
+}
