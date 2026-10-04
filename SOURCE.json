@@ -1,17 +1,16 @@
 {
   "legal": {
-    "evidence_sha256": "8b4ef7f4de6238573f92372442e003a86d32b3a7e883b8b8726d6e61c0318555",
+    "evidence_sha256": "605a8891f2a5ac734edc7f725f7ca79a46dfbdadc72bd53749a6220f51ac8bd8",
     "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
-    "notice_sha256": "d001e5cf3a7e9cb94527712fc1124b8759bba3aabe2ea18ed5edd6be6aba2b6f",
+    "notice_sha256": "ae6668561668a232dd7d65cc06f61d1edddac1434e3220e023dc484b920414a9",
     "permission_blockers": [],
     "status": "bounded source review; owner digest/artifact approval pending"
   },
   "maintenance": {
-    "audit_recipe_sha256": "94f8a47acaa1c5d1a99c7ae1050c687102b4409e46b23739c47c43b5184708cc",
-    "previous_commit": "b7844fbde3ef6c5ecdc1003e4e982b92e45fa555",
-    "publication_pilot": "view.catalog v0.1.2 b450cc981df92cc11e40d3de90e3993e28607f63",
+    "audit_recipe_sha256": "999e96b0f7f73ee59a297f62777b58c5147c567ec85e578c9dc417cec1e22641",
+    "previous_commit": "1f69be4c3486dcde643a8571e9e877c9298cd978",
     "source_payloads": "all src/upstream/full license-term hashes unchanged",
-    "version": "0.1.1"
+    "version": "0.2.0"
   },
   "monorepo_revision": "a2f939f22b8814950ff066abf245ab5d9da40e42",
   "preparation": "Source prepared and reviewed; no hosted Linux or graphical validation claimed.",
