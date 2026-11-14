@@ -1,44 +1,27 @@
 # view.project-tools
 
-One separately installable ZIP per View, never npm/OCI. Host contract: GAMS 2.0.3.
-Run npm test (Node 24, Python 3 stdlib). release.json binds package identities, deployment maps and hashes.
-Absolute imports enumerated in release.json are required Host-owned runtime/util/widget APIs; missing APIs, config or schemas are bugs, not optional fallbacks.
-Keep Project Config ids/tags and URLs as deployed. view-markdow spelling is deliberately unchanged.
-Blend 1D retains views/view-animation-blend-spaces.js; independently installed 2D requires views/view-animation-blend-space-2d.js in Project Config. No HTML/class behavior is rewritten.
-Install using scripts/release.py install (verified checksums), retain metadata under notices/project-units/<package>. Refuse all overwrite collisions.
-Dependencies (plugins, sibling Views, UI Services) remain Project configured; static Host imports are documented, not vendored.
-HOST-CONTRACT.json includes required dynamic widget paths and known legacy schema limits.
-GUI validation pending: Issue persistence, markdown rendering and dynamic property widgets. No blanket E2E claim.
+Issue, Markdown and properties Views for [GAMS](https://github.com/kkgams/gams), distributed as independently installable ZIPs. The local Project previews this README; issues use `docs/` and properties open as an internal popup. Markdown uses the Host renderer; properties require Host-owned `/widgets/inputs/<configured-module>.js` modules.
 
-## Release authorization
+| View | Source → deployed file | Screenshot | Original work |
+| --- | --- | --- | --- |
+| view.issues (`view-issues`) | `src/view.issues/views/view-issues.js` → `views/view-issues.js` | Not available | GAMS authors |
+| view.markdown (`view-markdow`) | `src/view.markdown/views/view-markdow.js` → `views/view-markdow.js` | Not available | GAMS authors |
+| view.props (`view-props`) | `src/view.props/views/view-props.js` → `views/view-props.js` | Not available | GAMS authors |
 
-A pushed matching version tag authorizes publication from any branch. No manual
-checksum approval variables are required; source/evidence and artifact checks remain
-strict. See `PUBLISHING.md`.
+Each ZIP includes [Apache-2.0](LICENSE), [NOTICE](NOTICE) and [licensing scope](LICENSING.md).
 
-## Local Project and documentation
+## Development
 
-Requires Node.js 24+, Python 3, Make, curl, tar and unzip. On macOS Apple Silicon:
+Requires Make, Node.js, Python 3, curl, zip, unzip and tar. `make open` requires macOS Apple Silicon. Sources load directly; Host helpers and pinned released dependencies in `gams.json` are not bundled.
 
-```sh
-make open            # check source and open this repository's gams.json
-make serve-docs      # http://localhost:8080; DOCS_PORT overrides
-make validate-docs
-make docs            # portable documentation under build/site/
-```
+| Command | Purpose |
+| --- | --- |
+| `make open` | Open local Project in released Host; first launch needs network. |
+| `make check` | Check JavaScript syntax. |
+| `make package` | Build independent stable-name ZIPs and SHA256SUMS under `build.nosync/`. |
+| `make serve-docs` | Preview pinned wiki; `DOCS_PORT=8081` overrides port 8080. |
+| `make docs` | Build portable wiki in `build.nosync/site/`. |
+| `make validate-docs` | Validate wiki links/content. |
+| `make clean` | Remove build output and marked downloads; refuse tracked files, symlinks and supplied tools/Units. |
 
-`make open` downloads the released Host into ignored `tools/gams.app` when absent,
-retains its notices in `tools/gams-release-notices/`, and explicitly sets
-`GAMS_APP_CWD`. It never updates an existing app implicitly or bypasses Gatekeeper.
-The Project uses local canonical View source; no sibling checkout is needed.
-First startup installs pinned released dependencies into ignored `gams_modules/`
-and requires network access. Source-only Views need no compilation; `make build`
-checks JavaScript syntax and local Project entry paths before launch.
-
-Documentation uses pinned justgook/wiki v1.4.0, with downloaded engine and output
-under ignored `build/`. `build-docs` remains an alias. Every push to `release`
-publishes via `make docs`, independently of version tags; select GitHub Actions
-as the repository's Pages source. A pushed matching version tag authorizes the Unit release from any branch.
-
-The initial layout previews this README with the local Markdown View. The issues
-View is configured against `docs/`; the properties View remains an internal popup.
+Existing Host tools are never implicitly updated. Keep macOS security checks intact. GUI verification of issue persistence, Markdown rendering and dynamic property widgets remains pending.
