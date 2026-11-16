@@ -5,7 +5,7 @@ status: reference
 
 # view.project-tools
 
-Issue, Markdown and properties Views for [GAMS](https://github.com/kkgams/gams), distributed as independently installable ZIPs. The local Project previews this README; issues use `docs/` and properties open as an internal popup. Markdown uses the Host renderer; properties require Host-owned `/widgets/inputs/<configured-module>.js` modules.
+Issue, Markdown and properties Views for [GAMS](https://github.com/kkgams/gams), distributed as independently installable ZIPs. The local Project previews this README; issues use `issues/` and properties open as an internal popup. Markdown uses the Host renderer; properties require Host-owned `/widgets/inputs/<configured-module>.js` modules.
 
 | View | Source → deployed file | Screenshot | Original work |
 | --- | --- | --- | --- |
@@ -21,6 +21,7 @@ Requires Make, Node.js, Python 3, curl, zip, unzip and tar. `make open` requires
 | --- | --- |
 | `make open` | Open local Project in released Host; first launch needs network. |
 | `make check` | Check JavaScript syntax. |
+| `make test` | Check the local Issues configuration, source documents and descending sort. |
 | `make package` | Build independent stable-name ZIPs and SHA256SUMS under `build.nosync/`. |
 | `make serve-docs` | Preview pinned wiki; `DOCS_PORT=8081` overrides port 8080. |
 | `make docs` | Build portable wiki in `build.nosync/site/`. |

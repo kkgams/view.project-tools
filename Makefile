@@ -17,7 +17,10 @@ WIKI_REPOSITORY := https://github.com/justgook/wiki
 WIKI_MAKEFILE := build.nosync/wiki-$(WIKI_VERSION).mk
 WIKI_ENGINE := $(abspath build.nosync/wiki-$(WIKI_VERSION))
 
-.PHONY: open check docs serve-docs validate-docs package clean
+.PHONY: open check test docs serve-docs validate-docs package clean
+
+test: check
+	$(NODE) --test test/*.test.mjs
 
 check:
 	@for source in $(SOURCES); do $(NODE) --input-type=module --check < "$$source" || exit; done

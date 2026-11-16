@@ -123,7 +123,7 @@
         "label": "Issues",
         "internal": false,
         "config": {
-          "defaultSource": "docs",
+          "defaultSource": "issues",
           "filter": {
             "status": [
               "open",
@@ -131,7 +131,7 @@
             ]
           },
           "sort": {
-            "mtime": "desc"
+            "mtime": "dsc"
           },
           "open": "view-markdow"
         }
