@@ -45,11 +45,17 @@ function createInputElement(markup, key) {
     template.innerHTML = markup.trim()
     assert(template.content.children.length === 1, `view-props input ${key} must contain exactly one element`)
     for (const node of template.content.childNodes) {
-        assert(node.nodeType === Node.ELEMENT_NODE || String(node.textContent).trim() === "", `view-props input ${key} must contain only one element`)
+        assert(
+            node.nodeType === Node.ELEMENT_NODE || String(node.textContent).trim() === "",
+            `view-props input ${key} must contain only one element`,
+        )
     }
     const editor = template.content.firstElementChild
     const tag = editor.tagName.toLowerCase()
-    assert(/^widget-input-[a-z0-9]+(?:-[a-z0-9]+)*$/.test(tag), `view-props input ${key} must use a widget-input-* element`)
+    assert(
+        /^widget-input-[a-z0-9]+(?:-[a-z0-9]+)*$/.test(tag),
+        `view-props input ${key} must use a widget-input-* element`,
+    )
     return editor
 }
 
@@ -161,7 +167,12 @@ export class ViewProps extends HTMLElement {
         const dataSource = this.readDataSource(props)
         this.props = this.valueMode === "json" ? cloneJsonProps(dataSource) : cloneStringProps(dataSource)
         this.renderRows()
-        this.setStatus(this.valueMode === "json" ? 'Values must be JSON literals; quote strings like "text"' : "Edit string properties", "info")
+        this.setStatus(
+            this.valueMode === "json"
+                ? 'Values must be JSON literals; quote strings like "text"'
+                : "Edit string properties",
+            "info",
+        )
     }
 
     readDataSource(props) {
@@ -226,7 +237,9 @@ export class ViewProps extends HTMLElement {
         try {
             return JSON.parse(value)
         } catch (error) {
-            throw new Error(`Property ${key} must be valid JSON: ${error instanceof Error ? error.message : String(error)}`)
+            throw new Error(
+                `Property ${key} must be valid JSON: ${error instanceof Error ? error.message : String(error)}`,
+            )
         }
     }
 
@@ -251,7 +264,12 @@ export class ViewProps extends HTMLElement {
         const valueInput = document.createElement("input")
         valueInput.type = "text"
         valueInput.name = "prop-value"
-        valueInput.value = value === undefined ? "" : this.valueMode === "json" ? stringifyJsonValue(value, `view-props property ${key}`) : String(value)
+        valueInput.value =
+            value === undefined
+                ? ""
+                : this.valueMode === "json"
+                  ? stringifyJsonValue(value, `view-props property ${key}`)
+                  : String(value)
         valueInput.placeholder = this.valueMode === "json" ? "JSON value" : "value"
         valueInput.setAttribute("autocomplete", "off")
         valueInput.setAttribute("autocorrect", "off")
@@ -266,13 +284,18 @@ export class ViewProps extends HTMLElement {
         const editor = valueCell.firstElementChild
         assert(editor instanceof HTMLElement, "view-props row missing value editor")
         if (editor.tagName.toLowerCase().startsWith("widget-input-")) return editor.value
-        assert(editor instanceof HTMLInputElement && editor.name === "prop-value", "view-props row has invalid value editor")
+        assert(
+            editor instanceof HTMLInputElement && editor.name === "prop-value",
+            "view-props row has invalid value editor",
+        )
         if (this.valueMode === "string") return editor.value
         try {
             return JSON.parse(editor.value)
         } catch (error) {
             if (allowInvalidJson) return undefined
-            throw new Error(`Property value must be valid JSON: ${error instanceof Error ? error.message : String(error)}`)
+            throw new Error(
+                `Property value must be valid JSON: ${error instanceof Error ? error.message : String(error)}`,
+            )
         }
     }
 
